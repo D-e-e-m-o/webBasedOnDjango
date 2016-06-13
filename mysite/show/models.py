@@ -12,6 +12,7 @@ class Artist(models.Model):
 class Works(models.Model):
 	artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 	workName = models.CharField(max_length=50)
+	pub_date = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return self.workName

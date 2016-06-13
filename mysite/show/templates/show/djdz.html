@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>test</title>
-
+    {% load staticfiles %}
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{% static 'show/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'show/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'show/css/bootstrap-theme.min.css' %}" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="{% static 'show/js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'show/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'show/css/owl.theme.css' %}" rel="stylesheet">
+    <script src="{% static 'show/js/jquery-1.8.3.min.js' %}"></script>
+    <script src="{% static 'show/js/owl.carousel.js' %}"></script>
     <script>
         $('#djdz').mousemove(function(){
             
@@ -32,7 +33,7 @@
           <div class="container">
                <div>
                   <ul class="nav navbar-nav nav-pills">
-                     <li><a href="index.html">主页</a></li>
+                     <li><a href="/">主页</a></li>
                      <li class="active"><a href="#" id="djdz">独家定制</a></li>
                      <li><a href="#">传统工艺品</a></li>
                      <li><a href="#">现代艺术品</a> </li>
@@ -44,8 +45,8 @@
                       </form>
                    </ul>
                   <ul class="nav navbar-nav nav-pills navbar-right">
-                    <button class="btn btn-primary navbar-btn">登录</button>
-                    <button class="btn btn-primary navbar-btn">注册</button>
+                    <a href="admin/" class="btn btn-primary navbar-btn">登录</a>
+                    <a href="#" class="btn btn-primary navbar-btn">注册</a>
                   </ul>
               </div>
           </div>
