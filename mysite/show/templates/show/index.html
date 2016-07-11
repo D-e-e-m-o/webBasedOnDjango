@@ -39,7 +39,7 @@
                <div>
                   <ul class="nav navbar-nav nav-pills">
                      <li class="active"><a href="#">主页</a></li>
-                     <li><a href="{% url 'show:djdz' %}">独家定制</a></li>
+                     <li><a href="{% url 'show:djdz' 1 %}">独家定制</a></li>
                      <li><a href="{% url 'show:ctgyp' %}">传统工艺品</a></li>
                      <li><a href="#">现代艺术品</a> </li>
                       <form class="navbar-form navbar-left" role="search">
@@ -51,7 +51,7 @@
                       </form>
                    </ul>
                   <ul class="nav navbar-nav nav-pills navbar-right">
-                    <a href="admin/" class="btn btn-primary navbar-btn">登录</a>
+                    <a href="/admin" class="btn btn-primary navbar-btn">登录</a>
                     <a href="#" class="btn btn-primary navbar-btn">注册</a>
                   </ul>
               </div>

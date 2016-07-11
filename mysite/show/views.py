@@ -14,7 +14,9 @@ def index(request):
 	return render(request, 'show/index.html', context)
 
 
-def djdz(request):
+def djdz(request, page):
+	context = {}
+	aritsts = Artist.objects.all()
 	return render(request, 'show/djdz.html')
 
 
