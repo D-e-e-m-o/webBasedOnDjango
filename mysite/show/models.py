@@ -16,3 +16,4 @@ class Works(models.Model):
 
 	def __str__(self):
 		return self.workName
+

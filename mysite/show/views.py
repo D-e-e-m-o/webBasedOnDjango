@@ -16,3 +16,7 @@ def index(request):
 
 def djdz(request):
 	return render(request, 'show/djdz.html')
+
+
+def ctgyp(request):
+	return render(request, 'show/ctgyp.html')

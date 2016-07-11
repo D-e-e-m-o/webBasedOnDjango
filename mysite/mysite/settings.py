@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'art',
-        'PASSWORD': 'mysql',
+        'PASSWORD': 'mysqld',
     }
 }
 

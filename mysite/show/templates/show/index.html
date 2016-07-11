@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>test</title>
+    <title>主页</title>
     {% load staticfiles %}
     <!-- Bootstrap -->
     <link href="{% static 'show/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -40,7 +40,7 @@
                   <ul class="nav navbar-nav nav-pills">
                      <li class="active"><a href="#">主页</a></li>
                      <li><a href="{% url 'show:djdz' %}">独家定制</a></li>
-                     <li><a href="#">传统工艺品</a></li>
+                     <li><a href="{% url 'show:ctgyp' %}">传统工艺品</a></li>
                      <li><a href="#">现代艺术品</a> </li>
                       <form class="navbar-form navbar-left" role="search">
                           <div class="form-group">
