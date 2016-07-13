@@ -17,7 +17,11 @@ def index(request):
 def djdz(request, page):
 	context = {}
 	aritsts = Artist.objects.all()
-	return render(request, 'show/djdz.html')
+	num = len(aritsts)
+	li = ''
+	for i in range(int(num/3)+1):
+		pass
+	return render(request, 'show/djdz.html', context)
 
 
 def ctgyp(request):
