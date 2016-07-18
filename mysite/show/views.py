@@ -26,3 +26,6 @@ def djdz(request, page):
 
 def ctgyp(request):
 	return render(request, 'show/ctgyp.html')
+
+def signup(request):
+	return render(request, 'show/signup.html')

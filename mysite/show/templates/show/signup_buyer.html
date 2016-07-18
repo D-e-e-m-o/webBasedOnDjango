@@ -38,14 +38,14 @@
           <div class="container">
                <div>
                   <ul class="nav navbar-nav nav-pills">
-                     <li class="active"><a href="#">主页</a></li>
+                     <li><a href="{% url 'show:index' %}">主页</a></li>
                      <li><a href="{% url 'show:djdz' 1 %}">独家定制</a></li>
                      <li><a href="{% url 'show:ctgyp' %}">传统工艺品</a></li>
                      <li><a href="#">现代艺术品</a> </li>
                   </ul>
                   <ul class="nav navbar-nav nav-pills navbar-right">
                     <a href="/admin" class="btn btn-primary navbar-btn">登录</a>
-                    <a href="/signup" class="btn btn-primary navbar-btn">注册</a>
+                    <a href="" class="btn btn-primary navbar-btn active">注册</a>
                   </ul>
               </div>
           </div>
@@ -55,19 +55,11 @@
             <h1>title</h1>
           </div>
       </div>
-      
-      <div class="container">
-          <div id="owl-home" class="owl-carousel">
-                <a class="item"><img src="{% static 'show/img/900x300.png' %}" alt=""></a>
-                <a class="item"><img src="{% static 'show/img/900x500.png' %}" alt=""></a>
-          </div>
-      </div>
-      <div class="container" id="showWorks">
-          <ul>
-              {% for i in src %}
-                <img src="{% static i %}">
-              {% endfor %}
-          </ul>
+      <div>
+         <form method="post" class="form-horizontal">
+             {% csrf_token %}
+             
+         </form>
       </div>
       <footer class="site-footer">
           <div class="container">这网站是合法的</div>
