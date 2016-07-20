@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artist, Works
 from django.utils import timezone
+from .forms import SigninForm, SignupBuyerForm
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -29,3 +31,8 @@ def ctgyp(request):
 
 def signup(request):
 	return render(request, 'show/signup.html')
+
+def signupBuyer(request):
+	context = {}
+	context['form'] = SignupBuyerForm()
+	return render(request, 'show/signup_buyer.html', context)
