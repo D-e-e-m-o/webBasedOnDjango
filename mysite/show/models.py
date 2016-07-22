@@ -40,5 +40,5 @@ class ProfileUser(object):
 
 
 class ExtraInfo(ProfileUser):
-	phone_number= models.CharField(max_length=11, verbose_name='手机号码')
-	artiist_name = models.CharField(max_length=20, unique=True, blank=True)
+	phone_number = models.CharField(max_length=11, verbose_name='手机号码')
+	artist_name = models.CharField(max_length=20, unique=True, blank=True)
