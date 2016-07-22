@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Artist, Works
 from django.utils import timezone
 from .forms import SigninForm, SignupBuyerForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -21,18 +22,37 @@ def djdz(request, page):
 	aritsts = Artist.objects.all()
 	num = len(aritsts)
 	li = ''
-	for i in range(int(num/3)+1):
-		pass
+	#for i in range(int(num/3)+1):
 	return render(request, 'show/djdz.html', context)
 
 
 def ctgyp(request):
 	return render(request, 'show/ctgyp.html')
 
+
 def signup(request):
 	return render(request, 'show/signup.html')
 
+
 def signupBuyer(request):
 	context = {}
-	context['form'] = SignupBuyerForm()
+	if request.method == 'POST':
+		form = SignupBuyerForm(request.POST)
+		if form.is_valid():
+			data = form.cleaned_data
+			passwd = data['password']
+			passwd2 = data['password2']
+			if passwd == passwd2:
+				username = data['name']
+				email = data['email']
+				user = User.objects.create_user(username, email, passwd)
+				user.save()
+				return render(request, 'show/signup_success.html')
+			else:
+				form.add_error('password2', '两次输入的密码不一致')
+				context['form'] = form
+		else:
+			context['form'] = form
+	else:
+		context['form'] = SignupBuyerForm()
 	return render(request, 'show/signup_buyer.html', context)
