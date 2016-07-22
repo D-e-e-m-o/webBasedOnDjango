@@ -56,26 +56,32 @@
                  {% csrf_token %}
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for={{ form.name.id_for_label }}>用户名</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-3">
                         <input type="text" class="form-control" name="name" placeholder="不超过40字符">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for={{ form.password.id_for_label }}>密码</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-3">
                         <input type="password" class="form-control" name="{{ form.password.html_name }}" placeholder="不少于6字符">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for={{ form.password2.id_for_label }}>确认密码</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-3">
                         <input type="password" class="form-control" name="{{ form.password2.html_name }}" placeholder="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for={{ form.email.id_for_label }}>邮箱</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-3">
                         <input type="email" class="form-control" name="{{ form.email.html_name }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for={{ form.ca.id_for_label }}>验证码</label>
+                    <div class="col-sm-3">
+                        {{ form.ca }}
                     </div>
                 </div>
                 <div class="form-group">

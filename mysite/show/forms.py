@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 
 class SignupBuyerForm(forms.Form):
@@ -7,6 +8,7 @@ class SignupBuyerForm(forms.Form):
 	password = forms.CharField(label='password', min_length=6, widget=forms.PasswordInput)
 	password2 = forms.CharField(label='confirm', min_length=6, widget=forms.PasswordInput)
 	email = forms.EmailField()
+	ca = CaptchaField()
 
 	def clean_name(self):
 		name = self.cleaned_data['name']
