@@ -7,7 +7,6 @@ class SignupBuyerForm(forms.Form):
 	password = forms.CharField(label='password', min_length=6, widget=forms.PasswordInput)
 	password2 = forms.CharField(label='confirm', min_length=6, widget=forms.PasswordInput)
 	email = forms.EmailField()
-	phone = forms.CharField(label='phone_number', max_length=11, min_length=11)
 
 	def clean_name(self):
 		name = self.cleaned_data['name']
