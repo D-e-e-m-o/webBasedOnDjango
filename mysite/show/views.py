@@ -45,7 +45,8 @@ def signupBuyer(request):
 			if passwd == passwd2:
 				username = data['name']
 				email = data['email']
-				user = User.objects.create_user(username, email, passwd)
+				phone = data['phone']
+				user = User.objects.create_user(username, email, passwd, phone_number=phone)
 				user.save()
 				return render(request, 'show/signup_success.html')
 			else:

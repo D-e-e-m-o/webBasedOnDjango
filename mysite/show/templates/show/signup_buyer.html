@@ -45,6 +45,7 @@
             <h1>title</h1>
           </div>
       </div>
+      <!-- 表单 -->
       <div>
           {% if form.errors %}
             {% for err in form %}
@@ -75,6 +76,12 @@
                     <label class="col-sm-2 control-label" for={{ form.email.id_for_label }}>邮箱</label>
                     <div class="col-sm-5">
                         <input type="email" class="form-control" name="{{ form.email.html_name }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for={{ form.phone.id_for_label }}>手机号</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="{{ form.phone.html_name }}">
                     </div>
                 </div>
                 <div class="form-group">
