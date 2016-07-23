@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Artist, Works
+from .models import Artist, Works, MyUser
 
 
 class WorksInline(admin.TabularInline):
@@ -14,3 +14,4 @@ class ArtistAdmin(admin.ModelAdmin):
 	inlines = [WorksInline]
 
 admin.site.register(Artist, ArtistAdmin)
+admin.site.register(MyUser)

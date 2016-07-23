@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Artist, Works
+from .models import Artist, Works, MyUser
 from django.utils import timezone
 from .forms import SigninForm, SignupBuyerForm
 from django.contrib.auth import login, logout
-from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -46,7 +45,7 @@ def signupBuyer(request):
 				username = data['name']
 				email = data['email']
 				phone = data['phone']
-				user = User.objects.create_user(username, email, passwd, phone_number=phone)
+				user = MyUser(username=username, password=passwd, is_active=0, mail=email, phone=phone)
 				user.save()
 				return render(request, 'show/signup_success.html')
 			else:

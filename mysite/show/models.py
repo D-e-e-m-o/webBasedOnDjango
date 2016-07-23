@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin
+import hashlib
 
 
 # Create your models here.
@@ -20,25 +19,29 @@ class Works(models.Model):
 		return self.workName
 
 
-class ProfileBase(type):
-	def __new__(cls, name, bases, attrs):
-		module = attrs.pop('__module__')
-		parents = [b for b in bases if isinstance(b, ProfileBase)]
-		if parents:
-			fields = []
-			for obj_name, obj in attrs.items():
-				if isinstance(obj, models.Field):
-					fields.append(obj_name)
-				User.add_to_class(obj_name, obj)
-			UserAdmin.fieldsets = list(UserAdmin.fieldsets)
-			UserAdmin.fieldsets.append((name, {'fields': fields}))
-		return super(ProfileBase, cls).__new__(cls, name, bases, attrs)
+class MyUser(models.Model):
+	username = models.CharField(u"用户名", max_length=32)
+	password = models.CharField(u"密码", max_length=50)
+	is_active = models.IntegerField(u"帐号是否可用")
+	phone = models.CharField(u"电话", max_length=11)
+	mail = models.EmailField(u"邮箱", max_length=50)
 
+	def __str__(self):
+		return self.username
 
-class ProfileUser(object):
-	__metaclass__ = ProfileBase
+	def is_authenticated(self):
+		return True
 
+	def hashed_password(self, password=None):
+		if not password:
+			return self.password
+		else:
+			return hashlib.md5(password).hexdigest()
 
-class ExtraInfo(ProfileUser):
-	phone_number = models.CharField(max_length=11, verbose_name='手机号码')
-	artist_name = models.CharField(max_length=20, unique=True, blank=True)
+	def check_password(self, password):
+		if self.hashed_password(password) == self.password:
+			return True
+		return False
+
+	class Meta:
+		db_table = "myuser"
