@@ -45,7 +45,8 @@ def signupBuyer(request):
 				username = data['name']
 				email = data['email']
 				phone = data['phone']
-				user = MyUser(username=username, password=passwd, is_active=0, mail=email, phone=phone)
+				user = MyUser(username=username, is_active=0, mail=email, phone=phone)
+				user.password = user.hashed_password(passwd.encode())
 				user.save()
 				return render(request, 'show/signup_success.html')
 			else:

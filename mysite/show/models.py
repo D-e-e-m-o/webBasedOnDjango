@@ -20,28 +20,32 @@ class Works(models.Model):
 
 
 class MyUser(models.Model):
-	username = models.CharField(u"用户名", max_length=32)
-	password = models.CharField(u"密码", max_length=50)
-	is_active = models.IntegerField(u"帐号是否可用")
-	phone = models.CharField(u"电话", max_length=11)
-	mail = models.EmailField(u"邮箱", max_length=50)
+	username = models.CharField("用户名", max_length=32, unique=True)
+	password = models.CharField("密码", max_length=50)
+	is_active = models.BooleanField("帐号是否可用", default=False)
+	phone = models.CharField("电话", max_length=11)
+	mail = models.EmailField("邮箱", max_length=50)
+	artist_name = models.CharField("艺术家姓名", max_length=20, null=True, unique=True)
+	is_artist = models.BooleanField("是否是艺术家", default=False)
 
 	def __str__(self):
 		return self.username
-
-	def is_authenticated(self):
-		return True
 
 	def hashed_password(self, password=None):
 		if not password:
 			return self.password
 		else:
-			return hashlib.md5(password).hexdigest()
+			return hashlib.md5('saltxx'.encode() + password + 'saltxxx'.encode()).hexdigest()
 
 	def check_password(self, password):
 		if self.hashed_password(password) == self.password:
 			return True
 		return False
+
+	def change_password(self, newPasswd):
+		if not newPasswd:
+			return self.password
+		return self.hashed_password(newPasswd)
 
 	class Meta:
 		db_table = "myuser"
