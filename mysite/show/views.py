@@ -57,3 +57,41 @@ def signupBuyer(request):
 	else:
 		context['form'] = SignupBuyerForm()
 	return render(request, 'show/signup_buyer.html', context)
+
+def signupSeller(request):
+	context = {}
+	if request.method == 'POST':
+		form = SignupBuyerForm(request.POST)
+		if form.is_valid():
+			data = form.cleaned_data
+			passwd = data['password']
+			passwd2 = data['password2']
+			if passwd == passwd2:
+				username = data['name']
+				email = data['email']
+				phone = data['phone']
+				user = MyUser(username=username, is_active=0, mail=email, phone=phone)
+				user.password = user.hashed_password(passwd.encode())
+				user.save()
+				return render(request, 'show/signup_success.html')
+			else:
+				form.add_error('password2', '两次输入的密码不一致')
+				context['form'] = form
+		else:
+			context['form'] = form
+	else:
+		context['form'] = SignupBuyerForm()
+	return render(request, 'show/signup_buyer.html', context)
+
+def signin(request):
+	context = {}
+	if request.method == 'POST':
+		form = SigninForm(request.POST)
+		if form.is_valid():
+			username = data['name']
+			passwd = data['password']
+			try:
+				user = MyUser(username=username, password=passwd)
+			except:
+				pass
+	return render(request, 'show/signin.html', context)
