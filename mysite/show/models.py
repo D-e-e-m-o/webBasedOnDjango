@@ -1,5 +1,5 @@
 from django.db import models
-import hashlib
+from django.contrib.auth.hashers import make_password, check_password
 
 
 # Create your models here.
@@ -35,12 +35,10 @@ class MyUser(models.Model):
 		if not password:
 			return self.password
 		else:
-			return hashlib.md5('saltxx'.encode() + password + 'saltxxx'.encode()).hexdigest()
+			return make_password(password, None, 'pbkdf2_sha256')
 
 	def check_password(self, password):
-		if self.hashed_password(password) == self.password:
-			return True
-		return False
+		return check_password(password, self.password)
 
 	def change_password(self, newPasswd):
 		if not newPasswd:

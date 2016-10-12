@@ -16,6 +16,7 @@ def index(request):
 	return render(request, 'show/index.html', context)
 
 
+#独家订制
 def djdz(request, page):
 	context = {}
 	aritsts = Artist.objects.all()
@@ -25,10 +26,12 @@ def djdz(request, page):
 	return render(request, 'show/djdz.html', context)
 
 
+#传统工艺品
 def ctgyp(request):
 	return render(request, 'show/ctgyp.html')
 
 
+#注册
 def signup(request):
 	return render(request, 'show/signup.html')
 
