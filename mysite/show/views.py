@@ -5,7 +5,6 @@ from .forms import SigninForm, SignupBuyerForm
 from django.contrib.auth import login, logout
 
 
-# Create your views here.
 def index(request):
 	context = {}
 	works = Works.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:2]
