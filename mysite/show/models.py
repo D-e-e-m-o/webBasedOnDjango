@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
 
+'''
+暂时的数据库是这样：先有每个艺术家的作品，每个作品和它对应的艺术家以foreignkey的方式连接。
+不过现在看来，这个结构可能并不合理……
+'''
 
 # Create your models here.
 class Artist(models.Model):
@@ -11,6 +15,7 @@ class Artist(models.Model):
 
 
 class Works(models.Model):
+	#艺术家，作品名，发布日期
 	artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 	workName = models.CharField(max_length=50)
 	pub_date = models.DateTimeField(auto_now_add=True)
@@ -30,7 +35,7 @@ class MyUser(models.Model):
 
 	def __str__(self):
 		return self.username
-
+	#密码保存到数据库之前必须加密
 	def hashed_password(self, password=None):
 		if not password:
 			return self.password

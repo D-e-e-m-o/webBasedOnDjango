@@ -2,7 +2,7 @@ from django import forms
 from .models import MyUser
 from captcha.fields import CaptchaField
 
-
+#买家注册的表
 class SignupBuyerForm(forms.Form):
 	name = forms.CharField(label='username', max_length=40)
 	password = forms.CharField(label='password', min_length=6, widget=forms.PasswordInput)
@@ -20,7 +20,7 @@ class SignupBuyerForm(forms.Form):
 			raise forms.ValidationError("用户名不合法")
 		return name
 
-
+#卖家注册的表
 class SignupSellerForm(forms.Form):
 	name = forms.CharField(label='username', max_length=40)
 	password = forms.CharField(label='password', min_length=6, widget=forms.PasswordInput)
@@ -38,7 +38,7 @@ class SignupSellerForm(forms.Form):
 			raise forms.ValidationError("用户名不合法")
 		return name
 
-
+#登录用
 class SigninForm(forms.Form):
 	username = forms.CharField(label='username')
 	password = forms.CharField(label='password', min_length=6, widget=forms.PasswordInput)

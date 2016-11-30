@@ -8,6 +8,7 @@ from django.contrib.auth import login, logout
 def index(request):
 	context = {}
 	works = Works.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:2]
+	#列出需要展示的作品
 	src = []
 	for i in works:
 		src.append("works/" + i.artist.name + '/' + i.workName + ".jpg")
@@ -19,8 +20,8 @@ def index(request):
 def djdz(request, page):
 	context = {}
 	aritsts = Artist.objects.all()
-	num = len(aritsts)
-	li = ''
+	#num = len(aritsts)
+	#li = ''
 	#for i in range(int(num/3)+1):
 	return render(request, 'show/djdz.html', context)
 
@@ -34,7 +35,7 @@ def ctgyp(request):
 def signup(request):
 	return render(request, 'show/signup.html')
 
-
+#买家注册
 def signupBuyer(request):
 	context = {}
 	if request.method == 'POST':
@@ -60,6 +61,7 @@ def signupBuyer(request):
 		context['form'] = SignupBuyerForm()
 	return render(request, 'show/signup_buyer.html', context)
 
+#卖家注册(暂未调试)
 def signupSeller(request):
 	context = {}
 	if request.method == 'POST':
@@ -85,6 +87,7 @@ def signupSeller(request):
 		context['form'] = SignupBuyerForm()
 	return render(request, 'show/signup_buyer.html', context)
 
+#登录（暂未调试）
 def signin(request):
 	context = {}
 	if request.method == 'POST':
